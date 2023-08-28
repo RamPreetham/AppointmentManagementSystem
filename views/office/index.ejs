@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs') %>
+    <main>
+        <% if(offices.length){ %>
+                <section>
+                    <article>
+                        <ul>
+                            <% offices.forEach(office=>{ %>
+                                   <h3> <li class="text"><a href="/offices/<%=office.id%>"><%=office.name%></a></li></h3>
+                            <%});%>
+                        </ul>
+                    </article>
+                </section>
+        <% }else{ %>
+            <section>
+                <h3>There are no offices found.</h3>
+            </section>
+        <% } %>
+    </main>
+<%- include('../partials/footer.ejs') %>

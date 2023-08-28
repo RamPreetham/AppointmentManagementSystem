@@ -1,0 +1,26 @@
+<%- include('../../partials/header.ejs') %>
+    <main>
+        <% if(appointmentSlots.length){%>
+                <section>
+                    <%appointmentSlots.forEach(slot=>{ %>
+                        <h3 class="text"><%=slot.date%></h3>
+                        <article>
+                            <form method="POST" action="/offices/<%=id%>/schedule">
+                                <table>
+                                    <tr>
+                                    <%slot.timeSlots.forEach(tslot=>{%>
+                                        <td><button class="maybe" name="slot" value="<%=slot.date%>,<%=tslot%>" type="submit"><%=tslot%></button></td>
+                                    <%});%>
+                                    </tr>
+                                </table>
+                            </form>
+                        </article>
+                    <%});%>
+                </section>
+        <% }else{ %>
+            <section>
+                <h3>There are no slots avilable.</h3>
+            </section>
+        <% } %>
+    </main>
+<%- include('../../partials/footer.ejs') %>

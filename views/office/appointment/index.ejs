@@ -1,0 +1,42 @@
+<%- include('../../partials/header.ejs') %>   
+   <main>
+        <section>
+            <h3>Scheduled Appointments:</h3>
+            <article>
+                <%if(bookedAppointments.length){%>
+                    <table class="profile">
+                        <tr>
+                            <th class="profiledata">First Name</th>
+                            <th class="profiledata">Last Name</th>
+                            <th class="profiledata">Date</th>
+                            <th class="profiledata">Time</th>
+                        </tr>
+                        <%bookedAppointments.forEach(bookedAppointment=>{%>
+                            <tr>
+                                <td class="profiledata">
+                                    <p><%=bookedAppointment.user.firstName%></p>
+                                </td>
+                                <td class="profiledata">
+                                    <p><%=bookedAppointment.user.lastName%></p>
+                                </td>
+                                <td class="profiledata">
+                                    <p><%=bookedAppointment.date%></p>
+                                </td>
+                                <td class="profiledata">
+                                    <p><%=bookedAppointment.time%></p>
+                                </td>
+                            </tr>
+                        <%})%>
+                    </table>
+                <%}else{%>
+                    <p>There are no scheduled appointments for the selected office</p>
+                <%}%>
+            </article>
+        </section>
+    </main>
+    <aside>
+        <form>
+            <button class="yes" type="submit" formmethod="GET" formaction="/offices/<%=id%>/addAppointments">Add Appointment Slots</button>
+        </form>
+    </aside>
+<%- include('../../partials/footer.ejs') %>

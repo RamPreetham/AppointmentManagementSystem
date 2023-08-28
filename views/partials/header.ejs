@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Appointment System</title>
+        <link rel="icon" href="/images/icon.png">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        <header>
+            <a href="/"><img src="/images/icon.png" class="logo" alt="Logo"></a>
+            <nav>
+                <ul>
+                    <%if(user && !isAdmin){%>
+                    <li><a href="/users/profile">Profile</a></li>
+                    <li><a href="/users/logout">Logout</a></li>
+                    <%}else if(user && isAdmin){%>
+                    <li><a href="/offices/new">Add Offices</a></li>
+                    <li><a href="/admins/logout">Logout</a></li>
+                    <%}else{%>
+                    <li>
+                        <div class="dropdown">
+                            <button class="href">User</button>
+                            <div class="content">
+                                <a href="/users/login">User Login</a> <br>
+                                <a href="/users/new">User Signup</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="href">Admin</button>
+                            <div class="content">
+                                <a href="/admins/login"> Admin Login</a> <br>
+                                <a href="/admins/new">Admin Signup</a>
+                            </div>
+                        </div>
+                    </li>
+                    <%}%>
+                </ul>
+            </nav>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/offices">Offices</a></li>
+                <%if(username){%>
+                <li>
+                        <div class="right"><b>Welcome <i><%=username%></i></b></div>
+                </li>
+                <%}%>
+            </ul>
+            
+        </nav>
+        <%if(errorMessages.length>0){
+            errorMessages.forEach(message=>{%>
+                <div class='error'><%=message%></div>
+            <%});
+        }%>
+    
+        <%if(successMessages.length>0){
+            successMessages.forEach(message=>{%>
+                <div class='success'><%=message%></div>
+            <%});
+        }%>

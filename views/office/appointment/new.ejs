@@ -1,0 +1,33 @@
+<%- include('../../partials/header.ejs') %>
+    <main>
+        <form action="/offices/<%=id%>/addAppointments" method="POST">
+            <table>
+                <tr>
+                    <td><label for="date">Date:</label></td>
+                    <td><input type="date" id="date" name="date" required></td>
+                </tr>
+                <tr>
+                    <td><label for="open">Opens At:</label></td>
+                    <td><input type="time" id="open" name="open" required></td>
+                </tr>
+                <tr>
+                    <td><label for="close">Closes At:</label></td>
+                    <td><input type="time" id="close" name="close" required></td>
+                </tr>
+                <tr>
+                    <td><label for="slot">Time Of Each Slot:</label></td>
+                    <td><select name="slot" id="slot">
+                        <option value="15">15 Minutes</option>
+                        <option value="20">20 Minutes</option>
+                        <option value="30">30 Minutes</option>
+                      </select></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button>Add Appointments</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </main>
+<%- include('../../partials/footer.ejs') %>

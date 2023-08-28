@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs') %>
+    <main>
+        <form action="/admins/login" method="POST">
+            <table>
+                <tr>
+                    <th colspan="2"><h3>Admin Login</h3></th>
+                </tr>
+                <tr>
+                    <td><label for="email">Email:</label></td>
+                    <td><input type="email" id="email" name="email" placeholder="Email" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Password:</label></td>
+                    <td><input type="password" id="password" name="password" placeholder="Password" minlength="8" maxlength="64" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button>Login</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </main>
+<%- include('../partials/footer.ejs') %>

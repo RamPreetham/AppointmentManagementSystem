@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs') %>   
+   <main>
+        <section>
+            <h3><%=office.name%></h3>
+            <article>
+                <img class="eventImage" src="<%=office.image%>" alt="Office Logo">
+                <p class="eventOverview">
+                    <%=office.address%><br>
+                    <%=office.city%><br>
+                    <%=office.state%> - <%=office.zip%><br>
+                    Phone: <a href="tel:<%=office.phone%>"><%=office.phone%></a> <br>
+                    Email: <a href="<%=office.email%>"><%=office.email%></a> <br>
+                </p>
+            </article>
+        </section>
+        <section>
+            <h3>Details</h3>
+            <article>
+                <p><%=office.details%></p>
+            </article>
+        </section>
+    </main>
+    <aside>
+        <%if(user==office.admin._id){%>
+            <form>
+                <button type="submit" formmethod="GET" formaction="/offices/<%=office.id%>/edit">Update</button>
+                <button type="submit" class="no" formmethod="POST" formaction="/offices/<%=office.id%>?_method=DELETE">Delete</button>
+                <button type="submit" class="maybe" formmethod="GET" formaction="/offices/<%=office.id%>/appointments">Manage Appointments</button>
+            </form>
+        <%}else{%>
+            <form>
+                <button class="maybe" type="submit" formmethod="GET" formaction="/offices/<%=office.id%>/schedule">Schedule Appointment</button>
+            </form>
+        <%}%>
+    </aside>
+<%- include('../partials/footer.ejs') %>

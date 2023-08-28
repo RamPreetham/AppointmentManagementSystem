@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs') %>   
+   <main>
+        <section>
+            <h3><%=user.firstName+' '+user.lastName+'\'s'%> Booked Appointments:</h3>
+            <article>
+                <%if(appointments.length){%>
+                    <table class="profile">
+                        <tr>
+                            <th class="profiledata">Office</th>
+                            <th class="profiledata">Date</th>
+                            <th class="profiledata">Time</th>
+                            <th class="profiledata">Actions</th>
+                        </tr>
+                        <%appointments.forEach(appointment=>{%>
+                            <tr>
+                                <td class="profiledata">
+                                    <p><a href="/offices/<%=appointment.office.id%>"><%=appointment.office.name%></a></p>
+                                </td>
+                                <td class="profiledata">
+                                    <p><%=appointment.date%></p>
+                                </td>
+                                <td class="profiledata">
+                                    <p><%=appointment.time%></p>
+                                </td>
+                                <td class="profiledata">
+                                    <form>
+                                        <button type="submit" class="maybe" formmethod="GET" formaction="/offices/<%=appointment.office.id%>/schedule">Update</button>
+                                        <button type="submit" name="slot" value="<%=appointment.date%>,<%=appointment.time%>" class="no" formmethod="POST" formaction="/offices/<%=appointment.office.id%>/cancel?_method=DELETE">Cancel</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <%})%>
+                    </table>
+                <%}else{%>
+                    <p>You have not booked any appointments.</p>
+                <%}%>
+            </article>
+        </section>
+    </main>
+<%- include('../partials/footer.ejs') %>
